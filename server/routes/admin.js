@@ -38,11 +38,19 @@ router.post('/signup', (req, res) => {
   
   router.post('/login', async (req, res) => {
     const { username, password } = req.headers;
+    console.log(username, password)
     const admin = await Admin.findOne({ username, password });
     if (admin) {
-      const token = jwt.sign({ username, role: 'admin' }, SECRET, { expiresIn: '1h' });
-      res.json({ message: 'Logged in successfully', token });
+      try {
+        const token = jwt.sign({ username, role: 'admin' }, SECRET, { expiresIn: '1h' });
+        res.json({ message: 'Logged in successfully', token });
+      } catch (err) {
+        console.error('JWT signing error:', err);
+        res.status(500).json({ message: 'Failed to generate token' });
+      }
+      
     } else {
+      console.log("error")
       res.status(403).json({ message: 'Invalid username or password' });
     }
   });

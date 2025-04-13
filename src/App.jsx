@@ -2,10 +2,11 @@ import Signup from './Signup'
 import Appbar from './Appbar'
 import Signin from './Signin'
 import {BrowserRouter as Router,  Routes , Route} from 'react-router-dom'
-import Courses from './Courses'
-import Discourse from './Discourse'
+import AddCourse from './AddCourse'
+import Allcourse from './Allcourse'
 import Course from './Course'
 import Success from './Success'
+import { ThemeProviderWrapper } from "./theme/theme-provider"
 import {
   RecoilRoot,
   atom,
@@ -23,20 +24,21 @@ function App() {
        width : "100vm",
       backgroundColor : "#eeeeee"
     }}> */}
+    <ThemeProviderWrapper>
     <RecoilRoot>
     <Router>
-      <Appbar />
       <Routes>
          <Route path = "/login"  element = {<Signin />} />
          <Route path = "/"  element = {<Success />} />
          <Route path = "/signup"  element = {<Signup />} />
-         <Route path = '/addcourse' element = {<Courses />}/>
-         <Route path = "/courses"  element = {<Discourse />} />
+         <Route path = '/addcourse' element = {<AddCourse />}/>
+         <Route path = "/courses"  element = {<Allcourse />} />
          <Route path = "/course/:courseId"  element = {<Course />} />
       </Routes>
     </Router>
     </RecoilRoot>
-    {/* </div> */}
+    </ThemeProviderWrapper>
+        {/* </div> */}
     </>
   )
 }

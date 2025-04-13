@@ -1,11 +1,9 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
-import { Typography } from '@mui/material';
-import Link from '@mui/material/Link';
 import { useState } from 'react';
 
-function Courses(){
+function AddCourse(){
     const[title,setTitle] = useState(null);
     const[description,setDescription] = useState(null);
     const[imageUrl, setImageUrl] = useState(null);
@@ -83,4 +81,4 @@ function Courses(){
     </div>
 }
 
-export default Courses
+export default AddCourse
